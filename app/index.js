@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import './assets/styles/base.css'
+import './styles.css'
 
 const App = () => {
   return (
