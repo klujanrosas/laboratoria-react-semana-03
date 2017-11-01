@@ -6,7 +6,7 @@ import './styles.css'
 import Main from './components/Main'
 import store from './config/store'
 
-const MainWithRedux = () => {
+const App = () => {
   return (
     <Provider store={store}>
       <Main />
@@ -15,6 +15,6 @@ const MainWithRedux = () => {
 }
 
 render(
-  <MainWithRedux />,
+  <App />,
   document.getElementById('root')
 )

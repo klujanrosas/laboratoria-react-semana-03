@@ -48,19 +48,19 @@ const INITIAL_STATE = {
   asideLinks: [
     {
       href: '#',
-      texto: 'Link 1'
+      texto: 'Enlace 1'
     },
     {
       href: '#',
-      texto: 'Link 2'
+      texto: 'Enlace 2'
     },
     {
       href: '#',
-      texto: 'Link 3'
+      texto: 'Enlace 3'
     },
     {
       href: '#',
-      texto: 'Link 4'
+      texto: 'Enlace 4'
     }
   ]
 }
