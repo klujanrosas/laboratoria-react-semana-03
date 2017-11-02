@@ -6,12 +6,14 @@ import { connect } from 'react-redux'
 import Page from './Page'
 import Aside from './Aside'
 import FilterableProductTable from './FilterableProductTable'
+import CuentaRegresiva from './CuentaRegresiva'
 
 const Main = ({ products = [], asideTitulo = 'Título Default', asideLinks = [] }) => {
   return (
     <Page>
-      <FilterableProductTable products={products} />
-      <Aside links={asideLinks} titulo={asideTitulo} />
+      <CuentaRegresiva />
+      {/* <FilterableProductTable products={products} />
+      <Aside links={asideLinks} titulo={asideTitulo} /> */}
     </Page>
   )
 }
