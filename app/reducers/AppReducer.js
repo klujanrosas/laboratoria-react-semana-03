@@ -105,7 +105,7 @@ export default (state = INITIAL_STATE, action) => {
         product.name.match(new RegExp(filterText, 'ig'))
       )
     })
-    
+
     newState = {
       ...newState,
       filteredProducts

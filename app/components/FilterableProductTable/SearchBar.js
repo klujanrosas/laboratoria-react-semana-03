@@ -50,4 +50,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setFilterText: filterTextChanged, setStockOnlyValue: inStockOnlyChanged })(SearchBar)
+export default connect(
+  mapStateToProps,
+  {
+    setFilterText: filterTextChanged,
+    setStockOnlyValue: inStockOnlyChanged
+  }
+)(SearchBar)
