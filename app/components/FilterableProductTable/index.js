@@ -22,7 +22,7 @@ FilterableProductTable.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     stocked: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired
+    price: PropTypes.string.isRequired
   }))
 }
 

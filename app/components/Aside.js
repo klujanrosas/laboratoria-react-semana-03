@@ -10,7 +10,7 @@ const Aside = ({ links, titulo }) => {
   const children = links.map((linkProps) => {
     const { href, texto } = linkProps
     return (
-      <li>
+      <li key={Math.random()}>
         <a href={href}>
           {texto}
         </a>
