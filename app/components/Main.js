@@ -4,42 +4,26 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Page from './Page'
-import Aside from './Aside'
-import FilterableProductTable from './FilterableProductTable'
-import CuentaRegresiva from './CuentaRegresiva'
+import Tabs from './Tabs'
+import Tab from './Tabs/Tab'
 
-const Main = ({ products = [], asideTitulo = 'Título Default', asideLinks = [] }) => {
+const Main = () => {
   return (
     <Page>
-      <CuentaRegresiva />
-      {/* <FilterableProductTable products={products} />
-      <Aside links={asideLinks} titulo={asideTitulo} /> */}
+      <Tabs>
+        <Tab title="Tab 1">
+          <h1>Soy el Tab 1</h1>
+        </Tab>
+        <Tab title="Tab 2">
+          <h1>Soy el Tab 2</h1>
+        </Tab>
+        <Tab title="Tab 3">
+          <h1>Soy el Tab 3</h1>
+        </Tab>
+      </Tabs>
     </Page>
   )
 }
 
-Main.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  asideTitulo: PropTypes.string.isRequired,
-  asideLinks: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
-}
+export default Main
 
-const mapStateToProps = (state) => {
-  const {
-    AppReducer: {
-      filteredProducts,
-      asideTitulo,
-      asideLinks
-    }
-  } = state
-
-  return {
-    products: filteredProducts,
-    asideTitulo,
-    asideLinks
-  }
-}
-
-const MainWithRedux = connect(mapStateToProps)(Main)
-
-export default MainWithRedux
