@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: 'app.min.js',
     path: resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: ''
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
