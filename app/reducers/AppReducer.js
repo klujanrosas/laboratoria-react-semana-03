@@ -1,3 +1,8 @@
+import {
+  FILTER_TEXT_CHANGED,
+  IN_STOCK_ONLY_CHANGED
+} from '../actions/types'
+
 // Supongamos que esto recibimos del API en forma JSON
 const PRODUCTS = [
   {
@@ -66,9 +71,46 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
+  let newState = {}
   switch (action.type) {
-    // más operaciones
+    case FILTER_TEXT_CHANGED:
+      newState = {
+        ...state,
+        filterText: action.payload
+      }
+      break
+    case IN_STOCK_ONLY_CHANGED:
+      newState = {
+        ...state,
+        inStockOnly: action.payload
+      }
+      break
     default:
       return state
   }
+
+  if (action.type === FILTER_TEXT_CHANGED || action.type === IN_STOCK_ONLY_CHANGED) {
+    const filteredProducts = state.originalProducts.filter((product) => {
+      const filterText =
+        action.type === FILTER_TEXT_CHANGED ?
+          action.payload.trim() :
+          state.filterText.trim()
+      const inStockOnly =
+        action.type === IN_STOCK_ONLY_CHANGED ?
+          action.payload :
+          state.inStockOnly
+
+      return (
+        (inStockOnly ? product.stocked : true) &&
+        product.name.match(new RegExp(filterText, 'ig'))
+      )
+    })
+    
+    newState = {
+      ...newState,
+      filteredProducts
+    }
+  }
+
+  return newState
 }
