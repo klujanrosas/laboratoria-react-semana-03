@@ -19,6 +19,12 @@ class CuentaRegresiva extends React.Component {
     )
   }
 
+  componentWillUnmount() {
+    if (this.timerID) {
+      clearInterval(this.timerID)
+    }
+  }
+
   tick() {
     const { duracion, inicio } = this.state
     const ahora = Date.now()
