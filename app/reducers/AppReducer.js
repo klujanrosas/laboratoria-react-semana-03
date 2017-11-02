@@ -71,46 +71,52 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  let newState = {}
   switch (action.type) {
     case FILTER_TEXT_CHANGED:
-      newState = {
+      return {
         ...state,
-        filterText: action.payload
+        filterText: action.payload,
+        filteredProducts:
+          state.originalProducts.filter((p) => {
+            return state.inStockOnly ?
+              p.stocked && p.name.match(new RegExp(action.payload.trim(), 'ig')) :
+              p.name.match(new RegExp(action.payload.trim(), 'ig'))
+          })
       }
-      break
     case IN_STOCK_ONLY_CHANGED:
-      newState = {
+      return {
         ...state,
-        inStockOnly: action.payload
+        inStockOnly: action.payload,
+        filteredProducts: state.originalProducts.filter((p) => {
+          return action.payload ? p.stocked : true
+        })
       }
-      break
     default:
       return state
   }
 
-  if (action.type === FILTER_TEXT_CHANGED || action.type === IN_STOCK_ONLY_CHANGED) {
-    const filteredProducts = state.originalProducts.filter((product) => {
-      const filterText =
-        action.type === FILTER_TEXT_CHANGED ?
-          action.payload.trim() :
-          state.filterText.trim()
-      const inStockOnly =
-        action.type === IN_STOCK_ONLY_CHANGED ?
-          action.payload :
-          state.inStockOnly
+  // if (action.type === FILTER_TEXT_CHANGED || action.type === IN_STOCK_ONLY_CHANGED) {
+  //   const filteredProducts = state.originalProducts.filter((product) => {
+  //     const filterText =
+  //       action.type === FILTER_TEXT_CHANGED ?
+  //         action.payload.trim() :
+  //         state.filterText.trim()
+  //     const inStockOnly =
+  //       action.type === IN_STOCK_ONLY_CHANGED ?
+  //         action.payload :
+  //         state.inStockOnly
 
-      return (
-        (inStockOnly ? product.stocked : true) &&
-        product.name.match(new RegExp(filterText, 'ig'))
-      )
-    })
+  //     return (
+  //       (inStockOnly ? product.stocked : true) &&
+  //       product.name.match(new RegExp(filterText, 'ig'))
+  //     )
+  //   })
 
-    newState = {
-      ...newState,
-      filteredProducts
-    }
-  }
+  //   newState = {
+  //     ...newState,
+  //     filteredProducts
+  //   }
+  // }
 
-  return newState
+  // return newState
 }
