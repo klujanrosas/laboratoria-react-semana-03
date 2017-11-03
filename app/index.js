@@ -2,12 +2,11 @@ import React from 'react'
 import { render } from 'react-dom'
 
 import './styles.css'
+import CuentaRegresiva from './components/CuentaRegresiva'
 
 const App = () => {
   return (
-    <div>
-      Hola Mundo
-    </div>
+    <CuentaRegresiva />
   )
 }
 
